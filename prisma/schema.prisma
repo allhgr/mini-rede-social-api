@@ -49,6 +49,7 @@ model CurtidasPostagens {
 
   usuario Usuarios @relation(fields: [usuario_id], references: [id])
   postagem Postagens @relation(fields: [postagem_id], references: [id])
+  @@unique([usuario_id, postagem_id])
   @@map("CurtidasPostagens")
 }
 
@@ -74,5 +75,6 @@ model CurtidasComentarios {
 
   usuario Usuarios @relation(fields: [usuario_id], references: [id])
   comentario Comentarios @relation(fields: [comentario_id], references: [id])
+  @@unique([usuario_id, comentario_id])
   @@map("CurtidasComentarios")
 }
