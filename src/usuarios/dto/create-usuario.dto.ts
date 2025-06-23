@@ -8,7 +8,7 @@ export class CreateUsuarioDto {
   @MaxLength(100, {
     message: 'O nome pode ter no máximo 100 caracteres',
   })
-  @ApiProperty({ description: 'Nome do Usuario', maxLength: 5 })
+  @ApiProperty({ description: 'Nome do Usuario', maxLength: 100 })
   nome_usua: string;
 
   @IsString()
