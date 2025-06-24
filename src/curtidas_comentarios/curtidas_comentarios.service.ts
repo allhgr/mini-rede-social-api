@@ -1,26 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCurtidasComentarioDto } from './dto/create-curtidas_comentario.dto';
 import { UpdateCurtidasComentarioDto } from './dto/update-curtidas_comentario.dto';
+import { CurtidasComentarioRepository } from './repositories/curtidas_comentarios.repository';
 
 @Injectable()
 export class CurtidasComentariosService {
-  create(createCurtidasComentarioDto: CreateCurtidasComentarioDto) {
-    return 'This action adds a new curtidasComentario';
+  constructor(private readonly repository: CurtidasComentarioRepository) {}
+
+  async create(createCurtidasComentarioDto: CreateCurtidasComentarioDto) {
+    return await this.repository.create(createCurtidasComentarioDto);
   }
 
-  findAll() {
-    return `This action returns all curtidasComentarios`;
+  async findAll() {
+    return await this.repository.findAll;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} curtidasComentario`;
+  async findOne(id: number) {
+    return await this.repository.findOne(id);
   }
 
-  update(id: number, updateCurtidasComentarioDto: UpdateCurtidasComentarioDto) {
-    return `This action updates a #${id} curtidasComentario`;
+  async update(id: number, updateCurtidasComentarioDto: UpdateCurtidasComentarioDto) {
+    return await this.repository.update(id, updateCurtidasComentarioDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} curtidasComentario`;
+  async remove(id: number) {
+    return await this.repository.remove(id);
   }
 }
