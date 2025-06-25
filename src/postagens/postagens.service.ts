@@ -12,7 +12,7 @@ export class PostagensService {
   }
 
   async findAll() {
-    return await this.repository.findAll;
+    return await this.repository.findAll();
   }
 
   async findOne(id: number) {

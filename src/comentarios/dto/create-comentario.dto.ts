@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNumber, IsNotEmpty, MaxLength } from "class-validator";
+import { IsNumber, IsNotEmpty, MaxLength, IsString } from "class-validator";
 
 export class CreateComentarioDto {
 
@@ -13,7 +13,7 @@ export class CreateComentarioDto {
     @ApiProperty({ description: 'Chave Estrangeira Referente ao ID da Tabela Postagens' })
     postagem_id: number;
 
-    @IsNumber()
+    @IsString()
     @IsNotEmpty()
     @MaxLength(255, {
         message: 'A mensagem pode ter no máximo 255 caracteres',
