@@ -16,9 +16,6 @@ export class UsuarioRepository {
 
     async findAll(): Promise<UsuarioEntity[]> {
         return await this.prismaRepository.usuarios.findMany({
-            orderBy: {
-                nome_usua: 'asc',
-            },
         });
     }
 
