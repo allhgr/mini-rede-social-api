@@ -27,6 +27,15 @@ export class UsuarioRepository {
         });
     }
 
+    async findOneByEmailPassword(email: string, senha: string): Promise<UsuarioEntity | null> {
+        return await this.prismaRepository.usuarios.findFirst({
+            where: {
+                email_usua: email,
+                senha_usua: senha,
+            }
+        })
+    }
+
     async update(id: number, updateUsuarioDto: UpdateUsuarioDto): Promise<UsuarioEntity> {
         return await this.prismaRepository.usuarios.update({
             where: {
