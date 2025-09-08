@@ -24,6 +24,7 @@ model Usuarios {
   CurtidasPostagens CurtidasPostagens[]
   Comentarios Comentarios[]
   CurtidasComentarios CurtidasComentarios[]
+  Perfil Perfil[]
   
   @@map("Usuarios")
 }
@@ -77,4 +78,14 @@ model CurtidasComentarios {
   comentario Comentarios @relation(fields: [comentario_id], references: [id])
   @@unique([usuario_id, comentario_id])
   @@map("CurtidasComentarios")
+}
+
+model Perfil {
+  id Int @id @default(autoincrement())
+  usuario_id Int
+  nome_per String
+
+  usuario Usuarios @relation(fields: [usuario_id], references: [id])
+  @@unique([usuario_id])
+  @@map("Perfil")
 }
