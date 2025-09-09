@@ -16,8 +16,11 @@ export class PerfilRepository {
 
     async findAll(): Promise<PerfilEntity[]> {
         return await this.prismaRepository.perfil.findMany({
-            orderBy: {
-                id: 'asc',
+            orderBy: { id: 'asc' },
+            include: {
+                usuario: {
+                    select: { nome_usua: true },
+                },
             },
         });
     }

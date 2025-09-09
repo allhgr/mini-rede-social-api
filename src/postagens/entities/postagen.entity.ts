@@ -5,4 +5,7 @@ export class PostagenEntity implements Postagens {
     usuario_id: number;
     mensagem_post: string;
     criacao_post: Date;
+    usuario?: {
+        nome_usua: string;
+      };
 }

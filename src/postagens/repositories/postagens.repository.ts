@@ -6,7 +6,7 @@ import { UpdatePostagenDto } from "../dto/update-postagen.dto";
 
 @Injectable()
 export class PostagensRepository {
-    constructor(private readonly prismaRepository: PrismaService) {}
+    constructor(private readonly prismaRepository: PrismaService) { }
 
     async create(createPostagenDto: CreatePostagenDto): Promise<PostagenEntity> {
         return await this.prismaRepository.postagens.create({
@@ -16,8 +16,11 @@ export class PostagensRepository {
 
     async findAll(): Promise<PostagenEntity[]> {
         return await this.prismaRepository.postagens.findMany({
-            orderBy: {
-                id: 'asc',
+            orderBy: { id: 'asc' },
+            include: {
+                usuario: {
+                    select: { nome_usua: true },
+                },
             },
         });
     }
