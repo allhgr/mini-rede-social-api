@@ -14,7 +14,7 @@ export class PerfilRepository {
         });
     }
 
-    async findAll(): Promise<PerfilEntity[]> {
+    async findAll(): Promise<any[]> {
         return await this.prismaRepository.perfil.findMany({
             orderBy: { id: 'asc' },
             include: {
