@@ -85,6 +85,21 @@ model Perfil {
   usuario_id Int
   nome_per String
 
+  CRUD CRUD[]
+
   usuario Usuarios @relation(fields: [usuario_id], references: [id])
   @@map("Perfil")
+}
+
+model CRUD {
+  id Int @id @default(autoincrement())
+  create Boolean @default(false)
+  update Boolean @default(false)
+  delete Boolean @default(false)
+  view Boolean @default(true)
+  id_perfil Int
+  nome_tabela String
+
+  perfil Perfil @relation(fields: [id_perfil], references: [id])
+  @@map("CRUD")
 }

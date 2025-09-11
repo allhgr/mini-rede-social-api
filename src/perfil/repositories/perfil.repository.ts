@@ -29,7 +29,7 @@ export class PerfilRepository {
         return await this.prismaRepository.perfil.findFirst({
             where: {
                 id,
-            }
+            },
         });
     }
 

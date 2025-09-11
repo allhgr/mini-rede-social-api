@@ -5,8 +5,17 @@ import { ComentariosModule } from './comentarios/comentarios.module';
 import { CurtidasPostagensModule } from './curtidas_postagens/curtidas_postagens.module';
 import { CurtidasComentariosModule } from './curtidas_comentarios/curtidas_comentarios.module';
 import { PerfilModule } from './perfil/perfil.module';
+import { CrudModule } from './crud/crud.module';
 @Module({
-  imports: [UsuariosModule, PostagensModule, ComentariosModule, CurtidasPostagensModule, CurtidasComentariosModule, PerfilModule],
+  imports: [
+    UsuariosModule,
+    PostagensModule,
+    ComentariosModule,
+    CurtidasPostagensModule,
+    CurtidasComentariosModule,
+    PerfilModule,
+    CrudModule,
+  ],
   controllers: [],
   providers: [],
 })
