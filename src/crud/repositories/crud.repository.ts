@@ -14,7 +14,7 @@ export class CrudRepository {
     });
   }
 
-  async findAll(): Promise<any> {
+  async findAll(): Promise<CrudEntity[]> {
     return await this.prismaRepository.cRUD.findMany({
       orderBy: { id: 'asc' },
       select: {
@@ -26,39 +26,42 @@ export class CrudRepository {
         id_perfil: true,
         nome_tabela: true,
         perfil: {
-          select: { 
+          select: {
             nome_per: true,
             usuario: {
-              select: { nome_usua: true }
-            }
-          }
-        }
+              select: { id: true, nome_usua: true },
+            },
+          },
+        },
       },
     });
   }
 
   async findOne(id: number): Promise<CrudEntity | null> {
     return await this.prismaRepository.cRUD.findFirst({
-        where: {
-            id,
-        },
-    })
+      where: {
+        id,
+      },
+    });
   }
 
-  async update(id: number, updateCrudDto: UpdateCrudDto): Promise<CrudEntity | null> {
+  async update(
+    id: number,
+    updateCrudDto: UpdateCrudDto,
+  ): Promise<CrudEntity | null> {
     return await this.prismaRepository.cRUD.update({
-        where: {
-            id,
-        },
-        data: updateCrudDto,
+      where: {
+        id,
+      },
+      data: updateCrudDto,
     });
   }
 
   async remove(id: number): Promise<CrudEntity> {
     return await this.prismaRepository.cRUD.delete({
-        where: {
-            id,
-        }
-    })
+      where: {
+        id,
+      },
+    });
   }
 }
